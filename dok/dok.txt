@@ -1,3 +1,8 @@
 http://shengwangi.blogspot.com/2014/10/spring-jms-with-activemq-helloworld-example-send.html
 
 https://techannotation.wordpress.com/2012/06/05/spring-jms-produce-and-consume-messages/
+
+
+//instalowanie javy na Ubuntu
+https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get
+http://tecadmin.net/install-oracle-java-8-jdk-8-ubuntu-via-ppa/

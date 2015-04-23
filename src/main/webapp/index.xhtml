@@ -13,12 +13,27 @@
 	<hr />
 	<h:outputText value="Witaj w wysylaczu!" />
 
-	<h:form id="sendRecievedForm">
-		<p:commandButton value="Send message" action="#{jmsAppBean.sendMessage}"
-			update="sendRecievedForm" />
-			
-		<p:commandButton value="Get message" action="#{jmsAppBean.readMessage}"
-			update="sendRecievedForm" />
+	<h:form id="sendForm">
+
+		<p:inputText id="username" required="true"
+			label="Wiadomosc do wyslania" size="500"
+			value="#{jmsAppBean.singleMessage}" />
+		<p:commandButton value="Send message"
+			action="#{jmsAppBean.sendMessage}" update="sendForm" />
+	</h:form>
+	
+	<br />
+	<br />
+	<h:form id="recievedForm">
+		<p:commandButton value="Get message"
+			action="#{jmsAppBean.readMessage}" update="recievedForm" />
+
+		<!-- 		<h:outputText value="#{jmsAppBean.lista}" /> -->
+		<p:dataTable var="wiadomosc" value="#{jmsAppBean.lista}">
+			<p:column headerText="Wiadomosc">
+				<h:outputText value="#{wiadomosc}" />
+			</p:column>
+		</p:dataTable>
 	</h:form>
 
 

@@ -28,24 +28,44 @@
 
 
 	<!-- ==================MyConf============================= -->
+	
+	<!-- Embedded ActiveMQ Broker -->
+<!-- 	<amq:broker id="broker" useJmx="false" persistent="true"> -->
+<!-- 		<amq:transportConnectors> -->
+<!-- 			<amq:transportConnector uri="tcp://localhost:0" /> -->
+<!-- 		</amq:transportConnectors> -->
+<!-- 		<amq:systemUsage>  -->
+<!-- 			<amq:systemUsage sendFailIfNoSpaceAfterTimeout="5000"> -->
+<!-- 				<amq:memoryUsage> -->
+<!-- 					<amq:memoryUsage limit="128 mb" /> -->
+<!-- 				</amq:memoryUsage> -->
+<!-- 				<amq:storeUsage> -->
+<!-- 					<amq:storeUsage limit="512 mb" /> -->
+<!-- 				</amq:storeUsage> -->
+<!-- 				<amq:tempUsage> -->
+<!-- 					<amq:tempUsage limit="512 mb" /> -->
+<!-- 				</amq:tempUsage> -->
+<!-- 			</amq:systemUsage> -->
+<!-- 		</amq:systemUsage> -->
+<!-- 	</amq:broker> -->
 
 	<amq:connectionFactory id="jmsFactory" brokerURL="vm://localhost"
 		maxThreadPoolSize="35" />
 	<!-- ActiveMQ Destination -->
-	<amq:queue id="jmsAppDest" physicalName="mailbox-destination-three" />
+	<amq:queue id="jmsAppDest" physicalName="mailbox-destination-four" />
 
 	<!-- JMS Verifier Adapters -->
 	<bean id="jmsMessageAdapter" class="pl.mzerek.nauka.adapter.JmsMessageAdapter" />
 
 
 	<!-- JMS Consumer Configuration -->
-	<bean id="jmsConsumerConnectionFactory"
-		class="org.springframework.jms.connection.SingleConnectionFactory"
-		depends-on="broker" p:targetConnectionFactory-ref="jmsFactory" />
+<!-- 	<bean id="jmsConsumerConnectionFactory" -->
+<!-- 		class="org.springframework.jms.connection.SingleConnectionFactory" -->
+<!-- 		depends-on="broker" p:targetConnectionFactory-ref="jmsFactory" /> -->
 
 	<jms:listener-container container-type="default"
-		connection-factory="jmsConsumerConnectionFactory" acknowledge="auto">
-		<jms:listener destination="mailbox-destination-three"
+		connection-factory="amqConnectionFactory" acknowledge="auto">
+		<jms:listener destination="mailbox-destination-four"
 			ref="jmsMessageAdapter" />
 
 	</jms:listener-container>
@@ -63,7 +83,7 @@
 	<!-- ======================================================= -->
 	<!-- Default Destination Queue Definition -->
 	<bean id="defaultDestination" class="org.apache.activemq.command.ActiveMQQueue">
-		<!-- name of the queue -->
+<!-- 		name of the queue -->
 		<constructor-arg index="0" value="Send2Recv" />
 	</bean>
 
