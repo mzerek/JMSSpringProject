@@ -1,0 +1,4 @@
+pl\mzerek\nauka\beans\JmsAppBean.class
+pl\mzerek\nauka\adapter\JmsMessageAdapter.class
+pl\mzerek\nauka\beans\jms\utils\Receiver.class
+pl\mzerek\nauka\beans\JmsAppBean$1.class
