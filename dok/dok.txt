@@ -1,1 +1,3 @@
 http://shengwangi.blogspot.com/2014/10/spring-jms-with-activemq-helloworld-example-send.html
+
+https://techannotation.wordpress.com/2012/06/05/spring-jms-produce-and-consume-messages/
